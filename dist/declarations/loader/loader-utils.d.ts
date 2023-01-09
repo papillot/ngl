@@ -3,7 +3,7 @@
  * @author Alexander Rose <alexander.rose@weirdbyte.de>
  * @private
  */
-import { ParserParameters } from '../parser/parser';
+import { ParserParams } from './parser-loader';
 export interface LoaderParameters {
     ext: string;
     compressed: string | false;
@@ -61,4 +61,4 @@ export declare function getDataInfo(src: LoaderInput): {
  * @param  {LoaderParameters} params - loading parameters
  * @return {Promise} Promise resolves to the loaded data
  */
-export declare function autoLoad(file: LoaderInput, params?: Partial<LoaderParameters & ParserParameters>): any;
+export declare function autoLoad(file: LoaderInput, params?: Partial<LoaderParameters & ParserParams>): any;

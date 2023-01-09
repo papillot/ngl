@@ -24,7 +24,7 @@ import RepresentationElement from '../component/representation-element';
 import ComponentCollection from '../component/component-collection';
 import RepresentationCollection from '../component/representation-collection';
 import { LoaderParameters } from '../loader/loader-utils';
-import { StructureParserParameters } from '../parser/structure-parser';
+import { ParserParams } from '../loader/parser-loader';
 import AtomProxy from '../proxy/atom-proxy';
 import Animation from '../animation/animation';
 import Structure from '../structure/structure';
@@ -228,7 +228,7 @@ declare class Stage {
      *                   a {@link SurfaceComponent} or a {@link ScriptComponent} object,
      *                   depending on the type of the loaded file.
      */
-    loadFile(path: string | File | Blob, params?: Partial<StageLoadFileParams & StructureParserParameters>): Promise<void | Component>;
+    loadFile(path: string | File | Blob, params?: Partial<StageLoadFileParams & ParserParams>): Promise<void | Component>;
     loadScript(path: string | File | Blob): any;
     /**
      * Add the given component to the stage
