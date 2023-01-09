@@ -37,7 +37,7 @@ import VolumeComponent from '../component/volume-component'
 import ComponentCollection from '../component/component-collection'
 import RepresentationCollection from '../component/representation-collection'
 import { autoLoad, getFileInfo, LoaderParameters } from '../loader/loader-utils'
-import { StructureParserParameters } from '../parser/structure-parser'
+import { ParserParams } from '../loader/parser-loader'
 import AtomProxy from '../proxy/atom-proxy'
 import Animation from '../animation/animation'
 import Selection from '../selection/selection'
@@ -450,7 +450,7 @@ class Stage {
    *                   a {@link SurfaceComponent} or a {@link ScriptComponent} object,
    *                   depending on the type of the loaded file.
    */
-  loadFile (path: string|File|Blob, params: Partial<StageLoadFileParams & StructureParserParameters> = {}) {
+  loadFile (path: string|File|Blob, params: Partial<StageLoadFileParams & ParserParams> = {}) {
     const p = Object.assign({}, this.defaultFileParams, params)
     const name = getFileInfo(path).name
 
