@@ -7,7 +7,7 @@
 import { Matrix4 } from 'three'
 
 import { Debug, Log, ParserRegistry } from '../globals'
-import { defaults } from '../utils'
+import { defaults, hasKey } from '../utils'
 import StructureParser from './structure-parser'
 import Entity, { EntityTypeString } from '../structure/entity'
 import Unitcell, { UnitcellParams } from '../symmetry/unitcell'
@@ -270,7 +270,7 @@ class PdbParser extends StructureParser {
             if (doFrames) continue
           }
 
-          let element
+          let element: string | undefined
 
           if (isPqr) {
             serial = parseInt(ls![ 1 ])
@@ -302,8 +302,7 @@ class PdbParser extends StructureParser {
             if (!isLegacy) {
               if (isPdbqt) {
                 element = line.substr(76, 3).trim()
-                // @ts-expect-error TS limitation on narrowing indexes types with `in`
-                if (element in PDBQTSpecialElements) element = PDBQTSpecialElements[element]
+                if (hasKey(PDBQTSpecialElements, element)) element = PDBQTSpecialElements[element]
               } else {
                 element = line.substr(76, 2).trim()
                 if (!chainname) {

@@ -10,7 +10,7 @@ import StructureRepresentation, { StructureRepresentationParameters } from './st
 
 import { RepresentationRegistry } from '../globals'
 import { Structure } from '../ngl'
-import { defaults } from '../utils'
+import { defaults, hasKey } from '../utils'
 
 import { BufferData } from '../buffer/buffer'
 import MeshBuffer from '../buffer/mesh-buffer'
@@ -64,10 +64,6 @@ interface MeshData {
 }
 
 function createUpdatedObject(o: Object, updateSource: Object) {
-  function hasKey<O>(obj: O, key: keyof any): key is keyof O {
-    return key in obj
-  }
-
   const result = { ...o } // Shallow copy
   for (const key in result) {
     if (hasKey(result, key) && hasKey(updateSource, key)) {

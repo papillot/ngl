@@ -574,3 +574,14 @@ export function createSimpleSet<T> (): SimpleSet<T> {
     get list () { return Object.keys(set).map(k => set[k]) },
   }
 }
+
+/**
+ * Utility function around the `in` operator on object keys that helps
+ * narrowing the type for key in a true branch of an if block
+ * @param obj object
+ * @param key the key to test
+ * @example if (hasKey(myObj, name)) console.log(myObj[name]) // no error on indexing
+ */
+export function hasKey<O extends object>(obj: O, key: string | number | symbol): key is keyof O {
+  return key in obj
+}
